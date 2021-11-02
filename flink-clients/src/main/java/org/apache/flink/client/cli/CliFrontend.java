@@ -1038,7 +1038,6 @@ public class CliFrontend {
 	 * @param args
 	 */
 
-
 	public static void main(final String[] args) {
 		EnvironmentInformation.logEnvironmentInfo(LOG, "Command Line Client", args);
 
