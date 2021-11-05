@@ -1026,15 +1026,26 @@ public class CliFrontend {
 	}
 
 	/**
-	 * Submits the job based on the arguments.
-	 */
-
-	/**
-	 * 脚本执行命令
-	 * exec /opt/jdk1.8.0_211/bin/java -Dlog.file=/opt/flink-1.8.0/log/flink-root-client-louisvv.log
-	 * -Dlog4j.configuration=file:/opt/flink-1.8.0/conf/log4j-cli.properties
-	 * -Dlogback.configurationFile=file:/opt/flink-1.8.0/conf/logback.xml
-	 * -classpath /opt/flink-1.8.0/lib/log4j-1.2.17.jar:/opt/flink-1.8.0/lib/slf4j-log4j12-1.7.15.jar:/opt/flink-1.8.0/lib/flink-dist_2.12-1.8.0.jar::: org.apache.flink.client.cli.CliFrontend run
+	 * cd ${FLINK_HOME}
+	 * flink run -t yarn-per-job -c org.apache.flink.streaming.examples.socket.SocketWindowWordCount
+	 *   examples/streaming/SocketWindowWordCount.jar --port 9999
+	 * 发现是通过flink run 指令执行的, 最终的输出:
+	 * ${JAVA_HOME}/bin/java
+	 * -Dlog.file=${FLINK_HOME}/log/flink-sysadmin-client-BoYi-Pro.local.log
+	 * -Dlog4j.configuration=file:${FLINK_HOME}/conf/log4j-cli.properties
+	 * -Dlog4j.configurationFile=file:${FLINK_HOME}/conf/log4j-cli.properties
+	 * -Dlogback.configurationFile=file:${FLINK_HOME}/conf/logback.xml
+	 * -classpath ${FLINK_HOME}/*.jar::/opt/tools/hadoop-3.2.1/etc/hadoop::/opt/tools/hbase-2.0.2/conf
+	 *
+	 * org.apache.flink.client.cli.CliFrontend
+	 * run
+	 * -t yarn-per-job
+	 * -c org.apache.flink.streaming.examples.socket.SocketWindowWordCount
+	 * examples/streaming/SocketWindowWordCount.jar --port 9999
+	 * ————————————————
+	 * 版权声明：本文为CSDN博主「张伯毅」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+	 * 原文链接：https://blog.csdn.net/zhanglong_4444/article/details/114675925
+	 *
 	 * @param args
 	 */
 
